@@ -1,11 +1,12 @@
 # Topology
 <p align="center">
-<img src=https://user-images.githubusercontent.com/75082831/178126490-324ae4ec-8dd0-41a2-8b8f-2a8cf784ee80.png>
+
+<img src=https://user-images.githubusercontent.com/75082831/178127588-61f1f83b-52b6-4f71-b359-aa9c54a1a186.png>
 </p>
 
 The following terraform plan was created to simplify Day 2 networking and security operations of Horizon through NSX-T.
 
-The only file that needs modification are the variables.tf to fit the IP addressing, naming standards or tag criteria for an organization.
+The only file that needs modification are the variables.tf within the .\networking and .\security directories to fit the IP addressing, naming standards or tag criteria for an organization.
 
 # Requirements
 VMware software-defined data center components are installed
@@ -14,9 +15,10 @@ VMware software-defined data center components are installed
 - NSX-T 3.x
   - BGP is supported/configured on physical underlay
   - NSX-T Unified Appliance is deployed
-  - Host Transport Nodes are configured 
-  - Two (2) edge transport nodes are deployed
+  - NSX Host Transport Nodes are configured 
+  - Two (2) NSX edge transport nodes are deployed
     - Both edge nodes are Attached to an Edge Cluster
+    - No Tier0 gateways are associated with this Edge Cluster
 
 # Instructions
 
@@ -51,21 +53,21 @@ VMware software-defined data center components are installed
     - HA Mode:  Active/Active
     - Four Uplink Interfaces
       - Fabric-A
-        - edge01a-uplink-01 - 10.30.1.1/24
-        - edge01b-uplink-01 - 10.30.1.2/24
+        - edge01a-uplink-01 - 10.33.1.1/24
+        - edge01b-uplink-01 - 10.33.1.2/24
       - Fabric-B
-        - edge01a-uplink-02 - 10.30.11.1/24
-        - edge01b-uplink-02 - 10.30.11.2/24
+        - edge01a-uplink-02 - 10.33.11.1/24
+        - edge01b-uplink-02 - 10.33.11.2/24
     - BGP
       - Local AS: 3301
       - ECMP Enabled
       - Two (2) BGP Neighbors
         - Fabric-A: 
-          - Remote Address: 10.30.1.253
+          - Remote Address: 10.33.1.253
           - Remote AS: 65000
           - BFD: Enabled
         - Fabric-B:
-          - Remote Address: 10.30.11.253
+          - Remote Address: 10.33.11.253
           - Remote AS: 65000
           - BFD: Enabled
     - BGP Redistribution Policy
@@ -87,14 +89,14 @@ VMware software-defined data center components are installed
     - Gateway: TF_Tier_1
     - IP: 10.201.10.253/24
     - Scope|Tag:  domain|ent_svc
-  - TF-Segment-HZN-CS
-    - Gateway: TF_Tier_1
-    - IP: 10.201.20.253/24
-    - Scope|Tag: horizon|cs
   - TF-Segment-HZN-UAG
     - Gateway: TF_Tier_1
-    - IP: 10.201.30.253/24
+    - IP: 10.201.20.253/24
     - Scope|Tag: horizon|uag
+  - TF-Segment-HZN-CS
+    - Gateway: TF_Tier_1
+    - IP: 10.201.30.253/24
+    - Scope|Tag: horizon|cs
 - 10 Security Groups (HZN-GRP-###)
 - 27 services (HZN-SVC-###)
 - 44 DFW Application Policies 
