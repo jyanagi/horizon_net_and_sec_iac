@@ -1,5 +1,7 @@
 # Topology
-![Horizon IAC](https://user-images.githubusercontent.com/75082831/178125427-f6416aa0-bed9-4106-8699-d39c5e7f2bf4.png)
+<p align="center">
+<img src=https://user-images.githubusercontent.com/75082831/178126250-09a84ad0-68d8-4c2b-a885-4b27bd856c4b.png>
+</p>
 
 The following terraform plan was created to simplify Day 2 networking and security operations of Horizon through NSX-T.
 
@@ -22,18 +24,22 @@ VMware software-defined data center components are installed
 
 2. Clone this GIT repository: git clone https://github.com/jyanagi/horizon_net_and_sec_iac.git
 
-3. Run the following commands (ensure you are within the working directory of the main.tf file): 
+3. Navigate to the 'horizon_net_and_sec_iac' directory 
 
-   3a. Initializes the Terraform provider
+4. Run the following commands: 
+
+   4a. Initializes the Terraform provider
        ```terraform init```
 
-   3b. Pre-Check before deployment of Terraform Plan
+   4b. Pre-Check before deployment of Terraform Plan
        ```terraform plan```
 
-   3c. Deploys objects as defined in Terraform Plan
+   4c. Deploys objects as defined in Terraform Plan
        ```terraform apply -auto-approve```
 
-## The terraform modules will deploy the following:
+<details><summary> 
+<h1>Terraform Deployment Overview <i>(Click to Expand)</i></h1>
+</summary>
 
 - Two (2) VLAN-backed segments
   - nsx-vlan-3301-seg
@@ -89,7 +95,7 @@ VMware software-defined data center components are installed
     - Gateway: TF_Tier_1
     - IP: 10.201.30.253/24
     - Scope|Tag: horizon|uag
-    
-10 security groups (HZN-GRP-###)
-27 services (HZN-SVC-###)
-44 DFW rules (under Applications > Horizon Security Policies)
+- 10 Security Groups (HZN-GRP-###)
+- 27 services (HZN-SVC-###)
+- 44 DFW Application Policies 
+</details>
