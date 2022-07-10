@@ -1,6 +1,6 @@
 # Topology
 <p align="center">
-<img src=https://user-images.githubusercontent.com/75082831/178126250-09a84ad0-68d8-4c2b-a885-4b27bd856c4b.png>
+<img src=https://user-images.githubusercontent.com/75082831/178126490-324ae4ec-8dd0-41a2-8b8f-2a8cf784ee80.png>
 </p>
 
 The following terraform plan was created to simplify Day 2 networking and security operations of Horizon through NSX-T.
