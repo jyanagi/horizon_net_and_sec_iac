@@ -22,7 +22,7 @@ VMware software-defined data center components are installed
 
 1. Install Terraform (https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
-2. Clone this GIT repository: git clone https://github.com/jyanagi/horizon_net_and_sec_iac.git
+2. Clone this GIT repository: ```git clone https://github.com/jyanagi/horizon_net_and_sec_iac.git```
 
 3. Navigate to the 'horizon_net_and_sec_iac' directory 
 
